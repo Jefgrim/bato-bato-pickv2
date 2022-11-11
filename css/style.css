@@ -184,11 +184,19 @@ body {
     text-align: center;
 }
 
-#smallScreenPrompt button {
+#fullScreenBtn {
     margin-top: 20px;
     height: 50px;
     border: 0px;
     background-color: green;
+    border-radius: 10px;
+}
+
+#quitBtn {
+    margin-top: 20px;
+    height: 50px;
+    border: 0px;
+    background-color: red;
     border-radius: 10px;
 }
 

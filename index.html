@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bato-Bato Pick</title>
+    <script
+      src="https://kit.fontawesome.com/b6f073fba6.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div class="mainContainer">
+      <div class="player1">
+        <div class="restartBtnContainer">
+          <i class="fa-solid fa-arrow-rotate-right restartBtn"></i>
+        </div>
+        <div class="pickedMoveContainer">
+          <img src="images/Rock-Player.svg" alt="" id="pickedMoveImg" />
+        </div>
+        <div class="playerOptionsContainer">
+          <div class="playerOptionsContent">
+            <div class="namePointsContainer">
+              <div class="name"><h3>Player 1</h3></div>
+              <div class="score">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-regular fa-star"></i>
+                <i class="fa-regular fa-star"></i>
+              </div>
+            </div>
+            <div class="moveContainer">
+              <img src="images/Rock-Player.svg" alt="" class="moveBtn" />
+              <img src="images/Paper-Player.svg" alt="" class="moveBtn" />
+              <img src="images/Scissor-Player.svg" alt="" class="moveBtn" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="bot">
+        <div class="recentMovesContainer">
+          <div class="recentMovesContent">
+            <div><h3>Recent Matchup</h3></div>
+            <div class="recentMovesImgContainer">
+              <div class="recentMovesImg">
+                <img
+                  src="images/Rock-Player-Win.svg"
+                  alt=""
+                  class="recentImgs"
+                />
+                <img src="images/versusimg.svg" alt="" class="recentImgs" />
+                <img
+                  src="images/Scissor-Bot-Lose.svg"
+                  alt=""
+                  class="recentImgs"
+                />
+              </div>
+              <div class="recentMovesImg">
+                <img
+                  src="images/Rock-Player-Win.svg"
+                  alt=""
+                  class="recentImgs"
+                />
+                <img src="images/versusimg.svg" alt="" class="recentImgs" />
+                <img
+                  src="images/Scissor-Bot-Lose.svg"
+                  alt=""
+                  class="recentImgs"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="pickedMoveContainer">
+          <img src="images/Rock-Bot.svg" alt="" id="pickedMoveImg" />
+        </div>
+        <div class="botOptionsContainer">
+          <div class="botOptionsContent">
+            <div class="namePointsContainer">
+              <div class="name"><h3>Bot</h3></div>
+              <div class="score">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-regular fa-star"></i>
+                <i class="fa-regular fa-star"></i>
+              </div>
+            </div>
+            <div class="moveContainer">
+              <img src="images/Rock-Bot.svg" alt="" class="moveBtn" />
+              <img src="images/Paper-Bot.svg" alt="" class="moveBtn" />
+              <img src="images/Scissor-Bot.svg" alt="" class="moveBtn" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="js/script.js"></script>
+  </body>
+</html>

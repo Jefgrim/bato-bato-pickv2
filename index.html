@@ -12,7 +12,11 @@
     <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
-    <div class="mainContainer">
+    <div id="smallScreenPrompt" style="display: flex;">
+    <h1>You are in portrait using mobile, click the button below to start the game in fullscreen and landscape for better experience. Thank you.</h1>
+    <button id="fullScreenBtn">Start Game</button>
+    </div>
+    <div class="mainContainer" style="display: none;">
       <div class="player1">
         <div class="restartBtnContainer">
           <i class="fa-solid fa-arrow-rotate-right restartBtn"></i>

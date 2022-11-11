@@ -168,3 +168,27 @@ body {
     height: 60px;
     margin: 0px 0px 20px 0px;
 }
+
+
+#smallScreenPrompt {
+    height: 100vh;
+    width: 100%;
+    background-color: beige;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#smallScreenPrompt h1 {
+    margin: 10px;
+    text-align: center;
+}
+
+#smallScreenPrompt button {
+    margin-top: 20px;
+    height: 50px;
+    border: 0px;
+    background-color: green;
+    border-radius: 10px;
+}
+

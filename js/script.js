@@ -9,7 +9,7 @@ let rockMoveBtn = document.querySelector("#rockMoveBtn");
 let paperMoveBtn = document.querySelector("#paperMoveBtn");
 let scissorMoveBtn = document.querySelector("#scissorMoveBtn");
 
-// get recemt move container
+// get recemt move image container
 let recentMovesImgContainer = document.querySelector(
   "#recentMovesImgContainer"
 );
@@ -76,59 +76,354 @@ let botScore = 0;
 // declare bot moves
 botMove = ["rock", "paper", "scissor"];
 
-// add event listener to move buttons
+// add event listener to the move buttons
 rockMoveBtn.addEventListener("click", rockMoveFn);
 paperMoveBtn.addEventListener("click", paperMoveFn);
 scissorMoveBtn.addEventListener("click", scissorMoveFn);
 
 // added functions
 function rockMoveFn() {
+  // create div element to be added to recent moves image container
+  let recentmoveImgSubCon = document.createElement("div");
+
+  // create img element to be added to recemt moves image sub container
+  let recemtmoveImgPlayer = document.createElement("img");
+  let recemtmoveImgVersus = document.createElement("img");
+  let recemtmoveImgBot = document.createElement("img");
+
   switch (botMove[Math.floor(Math.random() * 3)]) {
     case "rock":
+      // change picked move image
       playerPickedMoveImg.src = "images/Rock-Player.svg";
       botPickedMoveImg.src = "images/Rock-Bot.svg";
+
+      // add class to the created div element
+      recentmoveImgSubCon.classList = "recentMovesDrawImg";
+
+      // add recent moves sub container to the recent moves container
+      recentMovesImgContainer.insertAdjacentElement(
+        "afterbegin",
+        recentmoveImgSubCon
+      );
+
+      // add img src to recent moves images
+      recemtmoveImgPlayer.src = "images/Rock-Player.svg";
+      recemtmoveImgVersus.src = "images/versusimg.svg";
+      recemtmoveImgBot.src = "images/Rock-Bot.svg";
+
+      // add class to recent moves images
+      recemtmoveImgPlayer.classList = "recentImgs";
+      recemtmoveImgVersus.classList = "recentImgs";
+      recemtmoveImgBot.classList = "recentImgs";
+
+      // add contents to recent moves sub container
+      recentmoveImgSubCon.insertAdjacentElement(
+        "afterbegin",
+        recemtmoveImgPlayer
+      );
+      recentmoveImgSubCon.insertAdjacentElement(
+        "beforeend",
+        recemtmoveImgVersus
+      );
+      recentmoveImgSubCon.insertAdjacentElement("beforeend", recemtmoveImgBot);
       break;
     case "paper":
       playerPickedMoveImg.src = "images/Rock-Player.svg";
       botPickedMoveImg.src = "images/Paper-Bot.svg";
+
+      // add class to the created div element
+      recentmoveImgSubCon.classList = "recentMovesLoseImg";
+
+      // add recent moves sub container to the recent moves container
+      recentMovesImgContainer.insertAdjacentElement(
+        "afterbegin",
+        recentmoveImgSubCon
+      );
+
+      // add img src to recent moves images
+      recemtmoveImgPlayer.src = "images/Rock-Player.svg";
+      recemtmoveImgVersus.src = "images/versusimg.svg";
+      recemtmoveImgBot.src = "images/Paper-Bot.svg";
+
+      // add class to recent moves images
+      recemtmoveImgPlayer.classList = "recentImgs";
+      recemtmoveImgVersus.classList = "recentImgs";
+      recemtmoveImgBot.classList = "recentImgs";
+
+      // add contents to recent moves sub container
+      recentmoveImgSubCon.insertAdjacentElement(
+        "afterbegin",
+        recemtmoveImgPlayer
+      );
+      recentmoveImgSubCon.insertAdjacentElement(
+        "beforeend",
+        recemtmoveImgVersus
+      );
+      recentmoveImgSubCon.insertAdjacentElement("beforeend", recemtmoveImgBot);
       break;
     case "scissor":
       playerPickedMoveImg.src = "images/Rock-Player.svg";
       botPickedMoveImg.src = "images/Scissor-Bot.svg";
+
+      // add class to the created div element
+      recentmoveImgSubCon.classList = "recentMovesWinImg";
+
+      // add recent moves sub container to the recent moves container
+      recentMovesImgContainer.insertAdjacentElement(
+        "afterbegin",
+        recentmoveImgSubCon
+      );
+
+      // add img src to recent moves images
+      recemtmoveImgPlayer.src = "images/Rock-Player.svg";
+      recemtmoveImgVersus.src = "images/versusimg.svg";
+      recemtmoveImgBot.src = "images/Scissor-Bot.svg";
+
+      // add class to recent moves images
+      recemtmoveImgPlayer.classList = "recentImgs";
+      recemtmoveImgVersus.classList = "recentImgs";
+      recemtmoveImgBot.classList = "recentImgs";
+
+      // add contents to recent moves sub container
+      recentmoveImgSubCon.insertAdjacentElement(
+        "afterbegin",
+        recemtmoveImgPlayer
+      );
+      recentmoveImgSubCon.insertAdjacentElement(
+        "beforeend",
+        recemtmoveImgVersus
+      );
+      recentmoveImgSubCon.insertAdjacentElement("beforeend", recemtmoveImgBot);
       break;
     default:
   }
 }
 function paperMoveFn() {
+  // create div element to be added to recent moves image container
+  let recentmoveImgSubCon = document.createElement("div");
+
+  // create img element to be added to recemt moves image sub container
+  let recemtmoveImgPlayer = document.createElement("img");
+  let recemtmoveImgVersus = document.createElement("img");
+  let recemtmoveImgBot = document.createElement("img");
+
   switch (botMove[Math.floor(Math.random() * 3)]) {
     case "rock":
       playerPickedMoveImg.src = "images/Paper-Player.svg";
       botPickedMoveImg.src = "images/Rock-Bot.svg";
+
+      // add class to the created div element
+      recentmoveImgSubCon.classList = "recentMovesWinImg";
+
+      // add recent moves sub container to the recent moves container
+      recentMovesImgContainer.insertAdjacentElement(
+        "afterbegin",
+        recentmoveImgSubCon
+      );
+
+      // add img src to recent moves images
+      recemtmoveImgPlayer.src = "images/Paper-Player.svg";
+      recemtmoveImgVersus.src = "images/versusimg.svg";
+      recemtmoveImgBot.src = "images/Rock-Bot.svg";
+
+      // add class to recent moves images
+      recemtmoveImgPlayer.classList = "recentImgs";
+      recemtmoveImgVersus.classList = "recentImgs";
+      recemtmoveImgBot.classList = "recentImgs";
+
+      // add contents to recent moves sub container
+      recentmoveImgSubCon.insertAdjacentElement(
+        "afterbegin",
+        recemtmoveImgPlayer
+      );
+      recentmoveImgSubCon.insertAdjacentElement(
+        "beforeend",
+        recemtmoveImgVersus
+      );
+      recentmoveImgSubCon.insertAdjacentElement("beforeend", recemtmoveImgBot);
       break;
     case "paper":
       playerPickedMoveImg.src = "images/Paper-Player.svg";
       botPickedMoveImg.src = "images/Paper-Bot.svg";
+
+      // add class to the created div element
+      recentmoveImgSubCon.classList = "recentMovesDrawImg";
+
+      // add recent moves sub container to the recent moves container
+      recentMovesImgContainer.insertAdjacentElement(
+        "afterbegin",
+        recentmoveImgSubCon
+      );
+
+      // add img src to recent moves images
+      recemtmoveImgPlayer.src = "images/Paper-Player.svg";
+      recemtmoveImgVersus.src = "images/versusimg.svg";
+      recemtmoveImgBot.src = "images/Paper-Bot.svg";
+
+      // add class to recent moves images
+      recemtmoveImgPlayer.classList = "recentImgs";
+      recemtmoveImgVersus.classList = "recentImgs";
+      recemtmoveImgBot.classList = "recentImgs";
+
+      // add contents to recent moves sub container
+      recentmoveImgSubCon.insertAdjacentElement(
+        "afterbegin",
+        recemtmoveImgPlayer
+      );
+      recentmoveImgSubCon.insertAdjacentElement(
+        "beforeend",
+        recemtmoveImgVersus
+      );
+      recentmoveImgSubCon.insertAdjacentElement("beforeend", recemtmoveImgBot);
       break;
     case "scissor":
       playerPickedMoveImg.src = "images/Paper-Player.svg";
       botPickedMoveImg.src = "images/Scissor-Bot.svg";
+
+      // add class to the created div element
+      recentmoveImgSubCon.classList = "recentMovesLoseImg";
+
+      // add recent moves sub container to the recent moves container
+      recentMovesImgContainer.insertAdjacentElement(
+        "afterbegin",
+        recentmoveImgSubCon
+      );
+
+      // add img src to recent moves images
+      recemtmoveImgPlayer.src = "images/Paper-Player.svg";
+      recemtmoveImgVersus.src = "images/versusimg.svg";
+      recemtmoveImgBot.src = "images/Scissor-Bot.svg";
+
+      // add class to recent moves images
+      recemtmoveImgPlayer.classList = "recentImgs";
+      recemtmoveImgVersus.classList = "recentImgs";
+      recemtmoveImgBot.classList = "recentImgs";
+
+      // add contents to recent moves sub container
+      recentmoveImgSubCon.insertAdjacentElement(
+        "afterbegin",
+        recemtmoveImgPlayer
+      );
+      recentmoveImgSubCon.insertAdjacentElement(
+        "beforeend",
+        recemtmoveImgVersus
+      );
+      recentmoveImgSubCon.insertAdjacentElement("beforeend", recemtmoveImgBot);
       break;
     default:
   }
 }
 function scissorMoveFn() {
+  // create div element to be added to recent moves image container
+  let recentmoveImgSubCon = document.createElement("div");
+
+  // create img element to be added to recemt moves image sub container
+  let recemtmoveImgPlayer = document.createElement("img");
+  let recemtmoveImgVersus = document.createElement("img");
+  let recemtmoveImgBot = document.createElement("img");
+
   switch (botMove[Math.floor(Math.random() * 3)]) {
     case "rock":
       playerPickedMoveImg.src = "images/Scissor-Player.svg";
       botPickedMoveImg.src = "images/Rock-Bot.svg";
+
+      // add class to the created div element
+      recentmoveImgSubCon.classList = "recentMovesLoseImg";
+
+      // add recent moves sub container to the recent moves container
+      recentMovesImgContainer.insertAdjacentElement(
+        "afterbegin",
+        recentmoveImgSubCon
+      );
+
+      // add img src to recent moves images
+      recemtmoveImgPlayer.src = "images/Scissor-Player.svg";
+      recemtmoveImgVersus.src = "images/versusimg.svg";
+      recemtmoveImgBot.src = "images/Rock-Bot.svg";
+
+      // add class to recent moves images
+      recemtmoveImgPlayer.classList = "recentImgs";
+      recemtmoveImgVersus.classList = "recentImgs";
+      recemtmoveImgBot.classList = "recentImgs";
+
+      // add contents to recent moves sub container
+      recentmoveImgSubCon.insertAdjacentElement(
+        "afterbegin",
+        recemtmoveImgPlayer
+      );
+      recentmoveImgSubCon.insertAdjacentElement(
+        "beforeend",
+        recemtmoveImgVersus
+      );
+      recentmoveImgSubCon.insertAdjacentElement("beforeend", recemtmoveImgBot);
       break;
     case "paper":
       playerPickedMoveImg.src = "images/Scissor-Player.svg";
       botPickedMoveImg.src = "images/Paper-Bot.svg";
+
+      // add class to the created div element
+      recentmoveImgSubCon.classList = "recentMovesWinImg";
+
+      // add recent moves sub container to the recent moves container
+      recentMovesImgContainer.insertAdjacentElement(
+        "afterbegin",
+        recentmoveImgSubCon
+      );
+
+      // add img src to recent moves images
+      recemtmoveImgPlayer.src = "images/Scissor-Player.svg";
+      recemtmoveImgVersus.src = "images/versusimg.svg";
+      recemtmoveImgBot.src = "images/Paper-Bot.svg";
+
+      // add class to recent moves images
+      recemtmoveImgPlayer.classList = "recentImgs";
+      recemtmoveImgVersus.classList = "recentImgs";
+      recemtmoveImgBot.classList = "recentImgs";
+
+      // add contents to recent moves sub container
+      recentmoveImgSubCon.insertAdjacentElement(
+        "afterbegin",
+        recemtmoveImgPlayer
+      );
+      recentmoveImgSubCon.insertAdjacentElement(
+        "beforeend",
+        recemtmoveImgVersus
+      );
+      recentmoveImgSubCon.insertAdjacentElement("beforeend", recemtmoveImgBot);
       break;
     case "scissor":
       playerPickedMoveImg.src = "images/Scissor-Player.svg";
       botPickedMoveImg.src = "images/Scissor-Bot.svg";
+
+      // add class to the created div element
+      recentmoveImgSubCon.classList = "recentMovesDrawImg";
+
+      // add recent moves sub container to the recent moves container
+      recentMovesImgContainer.insertAdjacentElement(
+        "afterbegin",
+        recentmoveImgSubCon
+      );
+
+      // add img src to recent moves images
+      recemtmoveImgPlayer.src = "images/Scissor-Player.svg";
+      recemtmoveImgVersus.src = "images/versusimg.svg";
+      recemtmoveImgBot.src = "images/Scissor-Bot.svg";
+
+      // add class to recent moves images
+      recemtmoveImgPlayer.classList = "recentImgs";
+      recemtmoveImgVersus.classList = "recentImgs";
+      recemtmoveImgBot.classList = "recentImgs";
+
+      // add contents to recent moves sub container
+      recentmoveImgSubCon.insertAdjacentElement(
+        "afterbegin",
+        recemtmoveImgPlayer
+      );
+      recentmoveImgSubCon.insertAdjacentElement(
+        "beforeend",
+        recemtmoveImgVersus
+      );
+      recentmoveImgSubCon.insertAdjacentElement("beforeend", recemtmoveImgBot);
       break;
     default:
   }

@@ -12,24 +12,38 @@
     <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
-    <div id="smallScreenPrompt" style="display: flex;">
-      <img src="images/rotate-phone.gif" alt="" class="rotatePhoneGif" style="display: block;" id="fullScreenBtn">
-    <h1 id="smallScreenPromptTxt">Rotate your phone and press the screen to continue.</h1>
-    <button id="quitBtn" style="display: none;">Close Game</button>
+    <div id="smallScreenPrompt" style="display: flex">
+      <img
+        src="images/rotate-phone.gif"
+        alt=""
+        class="rotatePhoneGif"
+        style="display: block"
+        id="fullScreenBtn"
+      />
+      <h1 id="smallScreenPromptTxt">
+        Rotate your phone and press the screen to continue.
+      </h1>
+      <button id="quitBtn" style="display: none">Close Game</button>
     </div>
-    <div class="mainContainer" style="display: none;">
+    <div class="mainContainer" style="display: none">
       <div class="player1">
         <div class="restartBtnContainer">
           <i class="fa-solid fa-arrow-rotate-right restartBtn"></i>
+          <i class="fa-solid fa-right-from-bracket exitBtn"></i>
         </div>
         <div class="pickedMoveContainer">
-          <img src="images/Rock-Player.svg" alt="" id="pickedMoveImg" />
+          <img
+            src="images/Rock-Player.svg"
+            alt=""
+            class="pickedMoveImg"
+            id="playerPickedMoveImg"
+          />
         </div>
         <div class="playerOptionsContainer">
           <div class="playerOptionsContent">
             <div class="namePointsContainer">
               <div class="name"><h3>Player 1</h3></div>
-              <div class="score">
+              <div class="score" id="playerScoreDisplay">
                 <i class="fa-solid fa-star"></i>
                 <i class="fa-solid fa-star"></i>
                 <i class="fa-solid fa-star"></i>
@@ -38,9 +52,24 @@
               </div>
             </div>
             <div class="moveContainer">
-              <img src="images/Rock-Player.svg" alt="" class="moveBtn" />
-              <img src="images/Paper-Player.svg" alt="" class="moveBtn" />
-              <img src="images/Scissor-Player.svg" alt="" class="moveBtn" />
+              <img
+                src="images/Rock-Player.svg"
+                alt=""
+                class="moveBtn"
+                id="rockMoveBtn"
+              />
+              <img
+                src="images/Paper-Player.svg"
+                alt=""
+                class="moveBtn"
+                id="paperMoveBtn"
+              />
+              <img
+                src="images/Scissor-Player.svg"
+                alt=""
+                class="moveBtn"
+                id="scissorMoveBtn"
+              />
             </div>
           </div>
         </div>
@@ -49,7 +78,7 @@
         <div class="recentMovesContainer">
           <div class="recentMovesContent">
             <div><h3>Recent Matchup</h3></div>
-            <div class="recentMovesImgContainer">
+            <div class="recentMovesImgContainer" id="recentMovesImgContainer">
               <div class="recentMovesImg">
                 <img
                   src="images/Rock-Player-Win.svg"
@@ -80,13 +109,18 @@
           </div>
         </div>
         <div class="pickedMoveContainer">
-          <img src="images/Rock-Bot.svg" alt="" id="pickedMoveImg" />
+          <img
+            src="images/Rock-Bot.svg"
+            alt=""
+            class="pickedMoveImg"
+            id="botPickedMoveImg"
+          />
         </div>
         <div class="botOptionsContainer">
           <div class="botOptionsContent">
             <div class="namePointsContainer">
               <div class="name"><h3>Bot</h3></div>
-              <div class="score">
+              <div class="score" id="botScoreDisplay">
                 <i class="fa-solid fa-star"></i>
                 <i class="fa-solid fa-star"></i>
                 <i class="fa-solid fa-star"></i>

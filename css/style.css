@@ -30,10 +30,21 @@ body {
   color: rgb(255, 246, 203);
   background-color: rgb(252, 20, 3);
   border-radius: 80%;
-  padding: 4%;
+  padding: 2%;
   position: absolute;
   left: 5px;
   top: 5px;
+}
+
+.exitBtn {
+  font-size: 30px;
+  color: rgb(255, 246, 203);
+  background-color: rgb(252, 20, 3);
+  border-radius: 80%;
+  padding: 2%;
+  position: absolute;
+  left: 5px;
+  top: 70px;
 }
 
 .pickedMoveContainer {
@@ -45,7 +56,7 @@ body {
   align-items: center;
 }
 
-#pickedMoveImg {
+.pickedMoveImg {
   width: 80%;
   height: 80%;
 }
@@ -154,7 +165,7 @@ body {
   border: solid;
   border-radius: 5px;
   justify-content: space-evenly;
-  border-color: rgb(255, 246, 203);
+  border-color: rgb(17, 240, 17);
   margin-bottom: 10px;
 }
 

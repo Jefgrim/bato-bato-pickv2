@@ -14,6 +14,10 @@ let recentMovesImgContainer = document.querySelector(
   "#recentMovesImgContainer"
 );
 
+// get picked move image
+let playerPickedMoveImg = document.querySelector("#playerPickedMoveImg");
+let botPickedMoveImg = document.querySelector("#botPickedMoveImg");
+
 // get score display container
 let playerScoreDisplay = document.querySelector("#playerScoreDisplay");
 let botScoreDisplay = document.querySelector("#botScoreDisplay");
@@ -64,3 +68,68 @@ function fullscreen() {
 }
 
 // game code
+
+// declare score
+let playerScore = 0;
+let botScore = 0;
+
+// declare bot moves
+botMove = ["rock", "paper", "scissor"];
+
+// add event listener to move buttons
+rockMoveBtn.addEventListener("click", rockMoveFn);
+paperMoveBtn.addEventListener("click", paperMoveFn);
+scissorMoveBtn.addEventListener("click", scissorMoveFn);
+
+// added functions
+function rockMoveFn() {
+  switch (botMove[Math.floor(Math.random() * 3)]) {
+    case "rock":
+      playerPickedMoveImg.src = "images/Rock-Player.svg";
+      botPickedMoveImg.src = "images/Rock-Bot.svg";
+      break;
+    case "paper":
+      playerPickedMoveImg.src = "images/Rock-Player.svg";
+      botPickedMoveImg.src = "images/Paper-Bot.svg";
+      break;
+    case "scissor":
+      playerPickedMoveImg.src = "images/Rock-Player.svg";
+      botPickedMoveImg.src = "images/Scissor-Bot.svg";
+      break;
+    default:
+  }
+}
+function paperMoveFn() {
+  switch (botMove[Math.floor(Math.random() * 3)]) {
+    case "rock":
+      playerPickedMoveImg.src = "images/Paper-Player.svg";
+      botPickedMoveImg.src = "images/Rock-Bot.svg";
+      break;
+    case "paper":
+      playerPickedMoveImg.src = "images/Paper-Player.svg";
+      botPickedMoveImg.src = "images/Paper-Bot.svg";
+      break;
+    case "scissor":
+      playerPickedMoveImg.src = "images/Paper-Player.svg";
+      botPickedMoveImg.src = "images/Scissor-Bot.svg";
+      break;
+    default:
+  }
+}
+function scissorMoveFn() {
+  switch (botMove[Math.floor(Math.random() * 3)]) {
+    case "rock":
+      playerPickedMoveImg.src = "images/Scissor-Player.svg";
+      botPickedMoveImg.src = "images/Rock-Bot.svg";
+      break;
+    case "paper":
+      playerPickedMoveImg.src = "images/Scissor-Player.svg";
+      botPickedMoveImg.src = "images/Paper-Bot.svg";
+      break;
+    case "scissor":
+      playerPickedMoveImg.src = "images/Scissor-Player.svg";
+      botPickedMoveImg.src = "images/Scissor-Bot.svg";
+      break;
+    default:
+  }
+}

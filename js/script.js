@@ -4,6 +4,7 @@ let mainContainer = document.querySelector(".mainContainer");
 // get button elements
 let restartBtn = document.querySelector(".restartBtn");
 let fullScreenBtn = document.querySelector("#fullScreenBtn");
+let exitBtn = document.querySelector(".exitBtn");
 let quitBtn = document.querySelector("#quitBtn");
 let rockMoveBtn = document.querySelector("#rockMoveBtn");
 let paperMoveBtn = document.querySelector("#paperMoveBtn");
@@ -74,7 +75,31 @@ let playerScore = 0;
 let botScore = 0;
 
 // declare bot moves
-botMove = ["rock", "paper", "scissor"];
+let botMove = ["rock", "paper", "scissor"];
+
+// declare random message if you win
+let winMessage = [
+  "Wow! You did great!",
+  "I Bet the bot is crying now!",
+  "You don't have mercy for the bot T_T",
+  "Okay I know! I really need to improve the bot",
+  "Chill that is just a bot, congratulations by the way.",
+];
+
+// declare random message if you lose
+let loseMessage = [
+  "Don't cry my friend, it's just a game",
+  "Well luck is not in your side",
+  "Damn! i'm proud of the bot!",
+  "I trained that bot, you loser!",
+  "Better luck next time, if luck will ever be with you tho",
+];
+
+// add event listener to restart button
+restartBtn.addEventListener("click", refreshPage);
+
+// add event listener to exit button
+exitBtn.addEventListener("click", exitGame);
 
 // add event listener to the move buttons
 rockMoveBtn.addEventListener("click", rockMoveFn);
@@ -204,6 +229,7 @@ function rockMoveFn() {
     default:
   }
 
+  // fill the star dipending on the scores
   if (playerScore == 1) {
     playerScoreDisplay.children[0].classList = "fa-solid fa-star";
   } else if (playerScore == 2) {
@@ -214,6 +240,14 @@ function rockMoveFn() {
     playerScoreDisplay.children[3].classList = "fa-solid fa-star";
   } else if (playerScore == 5) {
     playerScoreDisplay.children[4].classList = "fa-solid fa-star";
+
+    // remove event listener of move buttons
+    rockMoveBtn.removeEventListener("click", rockMoveFn);
+    paperMoveBtn.removeEventListener("click", paperMoveFn);
+    scissorMoveBtn.removeEventListener("click", scissorMoveFn);
+
+    // show message for winning
+    alert(winMessage[Math.round(Math.random() * 4)]);
   }
 
   if (botScore == 1) {
@@ -226,6 +260,14 @@ function rockMoveFn() {
     botScoreDisplay.children[3].classList = "fa-solid fa-star";
   } else if (botScore == 5) {
     botScoreDisplay.children[4].classList = "fa-solid fa-star";
+
+    // remove event listener of move buttons
+    rockMoveBtn.removeEventListener("click", rockMoveFn);
+    paperMoveBtn.removeEventListener("click", paperMoveFn);
+    scissorMoveBtn.removeEventListener("click", scissorMoveFn);
+
+    // show message for losing
+    alert(loseMessage[Math.round(Math.random() * 4)]);
   }
 }
 function paperMoveFn() {
@@ -359,6 +401,14 @@ function paperMoveFn() {
     playerScoreDisplay.children[3].classList = "fa-solid fa-star";
   } else if (playerScore == 5) {
     playerScoreDisplay.children[4].classList = "fa-solid fa-star";
+
+    // remove event listener of move buttons
+    rockMoveBtn.removeEventListener("click", rockMoveFn);
+    paperMoveBtn.removeEventListener("click", paperMoveFn);
+    scissorMoveBtn.removeEventListener("click", scissorMoveFn);
+
+    // show message for winning
+    alert(winMessage[Math.round(Math.random() * 4)]);
   }
 
   if (botScore == 1) {
@@ -371,6 +421,14 @@ function paperMoveFn() {
     botScoreDisplay.children[3].classList = "fa-solid fa-star";
   } else if (botScore == 5) {
     botScoreDisplay.children[4].classList = "fa-solid fa-star";
+
+    // remove event listener of move buttons
+    rockMoveBtn.removeEventListener("click", rockMoveFn);
+    paperMoveBtn.removeEventListener("click", paperMoveFn);
+    scissorMoveBtn.removeEventListener("click", scissorMoveFn);
+
+    // show message for losing
+    alert(loseMessage[Math.round(Math.random() * 4)]);
   }
 }
 function scissorMoveFn() {
@@ -504,6 +562,14 @@ function scissorMoveFn() {
     playerScoreDisplay.children[3].classList = "fa-solid fa-star";
   } else if (playerScore == 5) {
     playerScoreDisplay.children[4].classList = "fa-solid fa-star";
+
+    // remove event listener of move buttons
+    rockMoveBtn.removeEventListener("click", rockMoveFn);
+    paperMoveBtn.removeEventListener("click", paperMoveFn);
+    scissorMoveBtn.removeEventListener("click", scissorMoveFn);
+
+    // show message for winning
+    alert(winMessage[Math.round(Math.random() * 4)]);
   }
 
   if (botScore == 1) {
@@ -516,5 +582,25 @@ function scissorMoveFn() {
     botScoreDisplay.children[3].classList = "fa-solid fa-star";
   } else if (botScore == 5) {
     botScoreDisplay.children[4].classList = "fa-solid fa-star";
+
+    // remove event listener of move buttons
+    rockMoveBtn.removeEventListener("click", rockMoveFn);
+    paperMoveBtn.removeEventListener("click", paperMoveFn);
+    scissorMoveBtn.removeEventListener("click", scissorMoveFn);
+
+    // show message for losing
+    alert(loseMessage[Math.round(Math.random() * 4)]);
+  }
+}
+
+function refreshPage() {
+  location.reload();
+}
+
+function exitGame() {
+  if (confirm("Are you sure you want to quit the game?") == true) {
+    window.close();
+  } else {
+    alert("Good! Beat that bot!");
   }
 }

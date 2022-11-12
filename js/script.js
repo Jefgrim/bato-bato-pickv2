@@ -27,6 +27,9 @@ let botScoreDisplay = document.querySelector("#botScoreDisplay");
 let smallScreenPrompt = document.querySelector("#smallScreenPrompt");
 let smallScreenPromptTxt = document.querySelector("#smallScreenPromptTxt");
 
+// get popup message container
+let popupMsgContainer = document.querySelector("#popupMessage");
+
 // if screen width is less than 768px do this
 if (window.innerWidth < 630) {
   fullScreenBtn.addEventListener("click", fullscreen);
@@ -68,7 +71,7 @@ function fullscreen() {
   }
 }
 
-// game code
+// --------------------- GAME CODE ------------------------ //
 
 // declare score
 let playerScore = 0;
@@ -118,158 +121,146 @@ function rockMoveFn() {
 
   switch (botMove[Math.floor(Math.random() * 3)]) {
     case "rock":
-      // change picked move image
-      playerPickedMoveImg.src = "images/Rock-Player.svg";
-      botPickedMoveImg.src = "images/Rock-Bot.svg";
-
-      // add class to the created div element
-      recentmoveImgSubCon.classList = "recentMovesDrawImg";
-
-      // add recent moves sub container to the recent moves container
-      recentMovesImgContainer.insertAdjacentElement(
-        "afterbegin",
-        recentmoveImgSubCon
-      );
-
-      // add img src to recent moves images
-      recemtmoveImgPlayer.src = "images/Rock-Player.svg";
-      recemtmoveImgVersus.src = "images/versusimg.svg";
-      recemtmoveImgBot.src = "images/Rock-Bot.svg";
-
-      // add class to recent moves images
-      recemtmoveImgPlayer.classList = "recentImgs";
-      recemtmoveImgVersus.classList = "recentImgs";
-      recemtmoveImgBot.classList = "recentImgs";
-
-      // add contents to recent moves sub container
-      recentmoveImgSubCon.insertAdjacentElement(
-        "afterbegin",
-        recemtmoveImgPlayer
-      );
-      recentmoveImgSubCon.insertAdjacentElement(
-        "beforeend",
-        recemtmoveImgVersus
-      );
-      recentmoveImgSubCon.insertAdjacentElement("beforeend", recemtmoveImgBot);
+      removeMoveBtnEventListener();
+      addAnim();
+      setTimeout(rockRock, 3000);
+      // setTimeout(showPopupMsg, 4000);
+      // setTimeout(hidePopupMsg, 6000);
+      setTimeout(removeAnim, 3000);
+      setTimeout(updateScoreDisplay, 3000);
+      if (playerScore < 5 && botScore < 5) {
+        setTimeout(addMoveBtnEventListener, 3000);
+      }
       break;
     case "paper":
+      removeMoveBtnEventListener();
+      addAnim();
       // add score to bot
       botScore += 1;
-
-      playerPickedMoveImg.src = "images/Rock-Player.svg";
-      botPickedMoveImg.src = "images/Paper-Bot.svg";
-
-      // add class to the created div element
-      recentmoveImgSubCon.classList = "recentMovesLoseImg";
-
-      // add recent moves sub container to the recent moves container
-      recentMovesImgContainer.insertAdjacentElement(
-        "afterbegin",
-        recentmoveImgSubCon
-      );
-
-      // add img src to recent moves images
-      recemtmoveImgPlayer.src = "images/Rock-Player.svg";
-      recemtmoveImgVersus.src = "images/versusimg.svg";
-      recemtmoveImgBot.src = "images/Paper-Bot.svg";
-
-      // add class to recent moves images
-      recemtmoveImgPlayer.classList = "recentImgs";
-      recemtmoveImgVersus.classList = "recentImgs";
-      recemtmoveImgBot.classList = "recentImgs";
-
-      // add contents to recent moves sub container
-      recentmoveImgSubCon.insertAdjacentElement(
-        "afterbegin",
-        recemtmoveImgPlayer
-      );
-      recentmoveImgSubCon.insertAdjacentElement(
-        "beforeend",
-        recemtmoveImgVersus
-      );
-      recentmoveImgSubCon.insertAdjacentElement("beforeend", recemtmoveImgBot);
+      setTimeout(rockPaper, 3000);
+      // setTimeout(showPopupMsg, 4000);
+      // setTimeout(hidePopupMsg, 6000);
+      setTimeout(removeAnim, 3000);
+      setTimeout(updateScoreDisplay, 3000);
+      if (playerScore < 5 && botScore < 5) {
+        setTimeout(addMoveBtnEventListener, 3000);
+      }
       break;
     case "scissor":
+      removeMoveBtnEventListener();
+      addAnim();
       // add score to player
       playerScore += 1;
-
-      playerPickedMoveImg.src = "images/Rock-Player.svg";
-      botPickedMoveImg.src = "images/Scissor-Bot.svg";
-
-      // add class to the created div element
-      recentmoveImgSubCon.classList = "recentMovesWinImg";
-
-      // add recent moves sub container to the recent moves container
-      recentMovesImgContainer.insertAdjacentElement(
-        "afterbegin",
-        recentmoveImgSubCon
-      );
-
-      // add img src to recent moves images
-      recemtmoveImgPlayer.src = "images/Rock-Player.svg";
-      recemtmoveImgVersus.src = "images/versusimg.svg";
-      recemtmoveImgBot.src = "images/Scissor-Bot.svg";
-
-      // add class to recent moves images
-      recemtmoveImgPlayer.classList = "recentImgs";
-      recemtmoveImgVersus.classList = "recentImgs";
-      recemtmoveImgBot.classList = "recentImgs";
-
-      // add contents to recent moves sub container
-      recentmoveImgSubCon.insertAdjacentElement(
-        "afterbegin",
-        recemtmoveImgPlayer
-      );
-      recentmoveImgSubCon.insertAdjacentElement(
-        "beforeend",
-        recemtmoveImgVersus
-      );
-      recentmoveImgSubCon.insertAdjacentElement("beforeend", recemtmoveImgBot);
+      setTimeout(rockScissor, 3000);
+      // setTimeout(showPopupMsg, 4000);
+      // setTimeout(hidePopupMsg, 6000);
+      setTimeout(removeAnim, 3000);
+      setTimeout(updateScoreDisplay, 3000);
+      if (playerScore < 5 && botScore < 5) {
+        setTimeout(addMoveBtnEventListener, 3000);
+      }
       break;
     default:
   }
 
-  // fill the star dipending on the scores
-  if (playerScore == 1) {
-    playerScoreDisplay.children[0].classList = "fa-solid fa-star";
-  } else if (playerScore == 2) {
-    playerScoreDisplay.children[1].classList = "fa-solid fa-star";
-  } else if (playerScore == 3) {
-    playerScoreDisplay.children[2].classList = "fa-solid fa-star";
-  } else if (playerScore == 4) {
-    playerScoreDisplay.children[3].classList = "fa-solid fa-star";
-  } else if (playerScore == 5) {
-    playerScoreDisplay.children[4].classList = "fa-solid fa-star";
+  function rockRock() {
+    // change picked move image
+    playerPickedMoveImg.src = "images/Rock-Player.svg";
+    botPickedMoveImg.src = "images/Rock-Bot.svg";
 
-    // remove event listener of move buttons
-    rockMoveBtn.removeEventListener("click", rockMoveFn);
-    paperMoveBtn.removeEventListener("click", paperMoveFn);
-    scissorMoveBtn.removeEventListener("click", scissorMoveFn);
+    // add class to the created div element
+    recentmoveImgSubCon.classList = "recentMovesDrawImg";
 
-    // show message for winning
-    alert(winMessage[Math.round(Math.random() * 4)]);
+    // add recent moves sub container to the recent moves container
+    recentMovesImgContainer.insertAdjacentElement(
+      "afterbegin",
+      recentmoveImgSubCon
+    );
+
+    // add img src to recent moves images
+    recemtmoveImgPlayer.src = "images/Rock-Player.svg";
+    recemtmoveImgVersus.src = "images/versusimg.svg";
+    recemtmoveImgBot.src = "images/Rock-Bot.svg";
+
+    // add class to recent moves images
+    recemtmoveImgPlayer.classList = "recentImgs";
+    recemtmoveImgVersus.classList = "recentImgs";
+    recemtmoveImgBot.classList = "recentImgs";
+
+    // add contents to recent moves sub container
+    recentmoveImgSubCon.insertAdjacentElement(
+      "afterbegin",
+      recemtmoveImgPlayer
+    );
+    recentmoveImgSubCon.insertAdjacentElement("beforeend", recemtmoveImgVersus);
+    recentmoveImgSubCon.insertAdjacentElement("beforeend", recemtmoveImgBot);
   }
 
-  if (botScore == 1) {
-    botScoreDisplay.children[0].classList = "fa-solid fa-star";
-  } else if (botScore == 2) {
-    botScoreDisplay.children[1].classList = "fa-solid fa-star";
-  } else if (botScore == 3) {
-    botScoreDisplay.children[2].classList = "fa-solid fa-star";
-  } else if (botScore == 4) {
-    botScoreDisplay.children[3].classList = "fa-solid fa-star";
-  } else if (botScore == 5) {
-    botScoreDisplay.children[4].classList = "fa-solid fa-star";
+  function rockPaper() {
+    playerPickedMoveImg.src = "images/Rock-Player.svg";
+    botPickedMoveImg.src = "images/Paper-Bot.svg";
 
-    // remove event listener of move buttons
-    rockMoveBtn.removeEventListener("click", rockMoveFn);
-    paperMoveBtn.removeEventListener("click", paperMoveFn);
-    scissorMoveBtn.removeEventListener("click", scissorMoveFn);
+    // add class to the created div element
+    recentmoveImgSubCon.classList = "recentMovesLoseImg";
 
-    // show message for losing
-    alert(loseMessage[Math.round(Math.random() * 4)]);
+    // add recent moves sub container to the recent moves container
+    recentMovesImgContainer.insertAdjacentElement(
+      "afterbegin",
+      recentmoveImgSubCon
+    );
+
+    // add img src to recent moves images
+    recemtmoveImgPlayer.src = "images/Rock-Player.svg";
+    recemtmoveImgVersus.src = "images/versusimg.svg";
+    recemtmoveImgBot.src = "images/Paper-Bot.svg";
+
+    // add class to recent moves images
+    recemtmoveImgPlayer.classList = "recentImgs";
+    recemtmoveImgVersus.classList = "recentImgs";
+    recemtmoveImgBot.classList = "recentImgs";
+
+    // add contents to recent moves sub container
+    recentmoveImgSubCon.insertAdjacentElement(
+      "afterbegin",
+      recemtmoveImgPlayer
+    );
+    recentmoveImgSubCon.insertAdjacentElement("beforeend", recemtmoveImgVersus);
+    recentmoveImgSubCon.insertAdjacentElement("beforeend", recemtmoveImgBot);
+  }
+
+  function rockScissor() {
+    playerPickedMoveImg.src = "images/Rock-Player.svg";
+    botPickedMoveImg.src = "images/Scissor-Bot.svg";
+
+    // add class to the created div element
+    recentmoveImgSubCon.classList = "recentMovesWinImg";
+
+    // add recent moves sub container to the recent moves container
+    recentMovesImgContainer.insertAdjacentElement(
+      "afterbegin",
+      recentmoveImgSubCon
+    );
+
+    // add img src to recent moves images
+    recemtmoveImgPlayer.src = "images/Rock-Player.svg";
+    recemtmoveImgVersus.src = "images/versusimg.svg";
+    recemtmoveImgBot.src = "images/Scissor-Bot.svg";
+
+    // add class to recent moves images
+    recemtmoveImgPlayer.classList = "recentImgs";
+    recemtmoveImgVersus.classList = "recentImgs";
+    recemtmoveImgBot.classList = "recentImgs";
+
+    // add contents to recent moves sub container
+    recentmoveImgSubCon.insertAdjacentElement(
+      "afterbegin",
+      recemtmoveImgPlayer
+    );
+    recentmoveImgSubCon.insertAdjacentElement("beforeend", recemtmoveImgVersus);
+    recentmoveImgSubCon.insertAdjacentElement("beforeend", recemtmoveImgBot);
   }
 }
+
 function paperMoveFn() {
   // create div element to be added to recent moves image container
   let recentmoveImgSubCon = document.createElement("div");
@@ -281,156 +272,148 @@ function paperMoveFn() {
 
   switch (botMove[Math.floor(Math.random() * 3)]) {
     case "rock":
+      removeMoveBtnEventListener();
+      addAnim();
       // add score to player
       playerScore += 1;
-
-      playerPickedMoveImg.src = "images/Paper-Player.svg";
-      botPickedMoveImg.src = "images/Rock-Bot.svg";
-
-      // add class to the created div element
-      recentmoveImgSubCon.classList = "recentMovesWinImg";
-
-      // add recent moves sub container to the recent moves container
-      recentMovesImgContainer.insertAdjacentElement(
-        "afterbegin",
-        recentmoveImgSubCon
-      );
-
-      // add img src to recent moves images
-      recemtmoveImgPlayer.src = "images/Paper-Player.svg";
-      recemtmoveImgVersus.src = "images/versusimg.svg";
-      recemtmoveImgBot.src = "images/Rock-Bot.svg";
-
-      // add class to recent moves images
-      recemtmoveImgPlayer.classList = "recentImgs";
-      recemtmoveImgVersus.classList = "recentImgs";
-      recemtmoveImgBot.classList = "recentImgs";
-
-      // add contents to recent moves sub container
-      recentmoveImgSubCon.insertAdjacentElement(
-        "afterbegin",
-        recemtmoveImgPlayer
-      );
-      recentmoveImgSubCon.insertAdjacentElement(
-        "beforeend",
-        recemtmoveImgVersus
-      );
-      recentmoveImgSubCon.insertAdjacentElement("beforeend", recemtmoveImgBot);
+      setTimeout(paperRock, 3000);
+      // setTimeout(showPopupMsg, 4000);
+      // setTimeout(hidePopupMsg, 6000);
+      setTimeout(removeAnim, 3000);
+      setTimeout(updateScoreDisplay, 3000);
+      if (playerScore < 5 && botScore < 5) {
+        setTimeout(addMoveBtnEventListener, 3000);
+      }
       break;
     case "paper":
-      playerPickedMoveImg.src = "images/Paper-Player.svg";
-      botPickedMoveImg.src = "images/Paper-Bot.svg";
-
-      // add class to the created div element
-      recentmoveImgSubCon.classList = "recentMovesDrawImg";
-
-      // add recent moves sub container to the recent moves container
-      recentMovesImgContainer.insertAdjacentElement(
-        "afterbegin",
-        recentmoveImgSubCon
-      );
-
-      // add img src to recent moves images
-      recemtmoveImgPlayer.src = "images/Paper-Player.svg";
-      recemtmoveImgVersus.src = "images/versusimg.svg";
-      recemtmoveImgBot.src = "images/Paper-Bot.svg";
-
-      // add class to recent moves images
-      recemtmoveImgPlayer.classList = "recentImgs";
-      recemtmoveImgVersus.classList = "recentImgs";
-      recemtmoveImgBot.classList = "recentImgs";
-
-      // add contents to recent moves sub container
-      recentmoveImgSubCon.insertAdjacentElement(
-        "afterbegin",
-        recemtmoveImgPlayer
-      );
-      recentmoveImgSubCon.insertAdjacentElement(
-        "beforeend",
-        recemtmoveImgVersus
-      );
-      recentmoveImgSubCon.insertAdjacentElement("beforeend", recemtmoveImgBot);
+      removeMoveBtnEventListener();
+      addAnim();
+      setTimeout(paperPaper, 3000);
+      // setTimeout(showPopupMsg, 4000);
+      // setTimeout(hidePopupMsg, 6000);
+      setTimeout(removeAnim, 3000);
+      setTimeout(updateScoreDisplay, 3000);
+      if (playerScore < 5 && botScore < 5) {
+        setTimeout(addMoveBtnEventListener, 3000);
+      }
       break;
     case "scissor":
+      removeMoveBtnEventListener();
+      addAnim();
       // add score to bot
       botScore += 1;
-
-      playerPickedMoveImg.src = "images/Paper-Player.svg";
-      botPickedMoveImg.src = "images/Scissor-Bot.svg";
-
-      // add class to the created div element
-      recentmoveImgSubCon.classList = "recentMovesLoseImg";
-
-      // add recent moves sub container to the recent moves container
-      recentMovesImgContainer.insertAdjacentElement(
-        "afterbegin",
-        recentmoveImgSubCon
-      );
-
-      // add img src to recent moves images
-      recemtmoveImgPlayer.src = "images/Paper-Player.svg";
-      recemtmoveImgVersus.src = "images/versusimg.svg";
-      recemtmoveImgBot.src = "images/Scissor-Bot.svg";
-
-      // add class to recent moves images
-      recemtmoveImgPlayer.classList = "recentImgs";
-      recemtmoveImgVersus.classList = "recentImgs";
-      recemtmoveImgBot.classList = "recentImgs";
-
-      // add contents to recent moves sub container
-      recentmoveImgSubCon.insertAdjacentElement(
-        "afterbegin",
-        recemtmoveImgPlayer
-      );
-      recentmoveImgSubCon.insertAdjacentElement(
-        "beforeend",
-        recemtmoveImgVersus
-      );
-      recentmoveImgSubCon.insertAdjacentElement("beforeend", recemtmoveImgBot);
+      setTimeout(paperScissor, 3000);
+      // setTimeout(showPopupMsg, 4000);
+      // setTimeout(hidePopupMsg, 6000);
+      setTimeout(removeAnim, 3000);
+      setTimeout(updateScoreDisplay, 3000);
+      if (playerScore < 5 && botScore < 5) {
+        setTimeout(addMoveBtnEventListener, 3000);
+      }
       break;
     default:
   }
 
-  if (playerScore == 1) {
-    playerScoreDisplay.children[0].classList = "fa-solid fa-star";
-  } else if (playerScore == 2) {
-    playerScoreDisplay.children[1].classList = "fa-solid fa-star";
-  } else if (playerScore == 3) {
-    playerScoreDisplay.children[2].classList = "fa-solid fa-star";
-  } else if (playerScore == 4) {
-    playerScoreDisplay.children[3].classList = "fa-solid fa-star";
-  } else if (playerScore == 5) {
-    playerScoreDisplay.children[4].classList = "fa-solid fa-star";
+  function paperRock() {
+    // change picked move image
+    playerPickedMoveImg.src = "images/Paper-Player.svg";
+    botPickedMoveImg.src = "images/Rock-Bot.svg";
 
-    // remove event listener of move buttons
-    rockMoveBtn.removeEventListener("click", rockMoveFn);
-    paperMoveBtn.removeEventListener("click", paperMoveFn);
-    scissorMoveBtn.removeEventListener("click", scissorMoveFn);
+    // add class to the created div element
+    recentmoveImgSubCon.classList = "recentMovesWinImg";
 
-    // show message for winning
-    alert(winMessage[Math.round(Math.random() * 4)]);
+    // add recent moves sub container to the recent moves container
+    recentMovesImgContainer.insertAdjacentElement(
+      "afterbegin",
+      recentmoveImgSubCon
+    );
+
+    // add img src to recent moves images
+    recemtmoveImgPlayer.src = "images/Paper-Player.svg";
+    recemtmoveImgVersus.src = "images/versusimg.svg";
+    recemtmoveImgBot.src = "images/Rock-Bot.svg";
+
+    // add class to recent moves images
+    recemtmoveImgPlayer.classList = "recentImgs";
+    recemtmoveImgVersus.classList = "recentImgs";
+    recemtmoveImgBot.classList = "recentImgs";
+
+    // add contents to recent moves sub container
+    recentmoveImgSubCon.insertAdjacentElement(
+      "afterbegin",
+      recemtmoveImgPlayer
+    );
+    recentmoveImgSubCon.insertAdjacentElement("beforeend", recemtmoveImgVersus);
+    recentmoveImgSubCon.insertAdjacentElement("beforeend", recemtmoveImgBot);
   }
 
-  if (botScore == 1) {
-    botScoreDisplay.children[0].classList = "fa-solid fa-star";
-  } else if (botScore == 2) {
-    botScoreDisplay.children[1].classList = "fa-solid fa-star";
-  } else if (botScore == 3) {
-    botScoreDisplay.children[2].classList = "fa-solid fa-star";
-  } else if (botScore == 4) {
-    botScoreDisplay.children[3].classList = "fa-solid fa-star";
-  } else if (botScore == 5) {
-    botScoreDisplay.children[4].classList = "fa-solid fa-star";
+  function paperPaper() {
+    // change picked move image
+    playerPickedMoveImg.src = "images/Paper-Player.svg";
+    botPickedMoveImg.src = "images/Paper-Bot.svg";
 
-    // remove event listener of move buttons
-    rockMoveBtn.removeEventListener("click", rockMoveFn);
-    paperMoveBtn.removeEventListener("click", paperMoveFn);
-    scissorMoveBtn.removeEventListener("click", scissorMoveFn);
+    // add class to the created div element
+    recentmoveImgSubCon.classList = "recentMovesDrawImg";
 
-    // show message for losing
-    alert(loseMessage[Math.round(Math.random() * 4)]);
+    // add recent moves sub container to the recent moves container
+    recentMovesImgContainer.insertAdjacentElement(
+      "afterbegin",
+      recentmoveImgSubCon
+    );
+
+    // add img src to recent moves images
+    recemtmoveImgPlayer.src = "images/Paper-Player.svg";
+    recemtmoveImgVersus.src = "images/versusimg.svg";
+    recemtmoveImgBot.src = "images/Paper-Bot.svg";
+
+    // add class to recent moves images
+    recemtmoveImgPlayer.classList = "recentImgs";
+    recemtmoveImgVersus.classList = "recentImgs";
+    recemtmoveImgBot.classList = "recentImgs";
+
+    // add contents to recent moves sub container
+    recentmoveImgSubCon.insertAdjacentElement(
+      "afterbegin",
+      recemtmoveImgPlayer
+    );
+    recentmoveImgSubCon.insertAdjacentElement("beforeend", recemtmoveImgVersus);
+    recentmoveImgSubCon.insertAdjacentElement("beforeend", recemtmoveImgBot);
+  }
+
+  function paperScissor() {
+    // change picked move image
+    playerPickedMoveImg.src = "images/Paper-Player.svg";
+    botPickedMoveImg.src = "images/Scissor-Bot.svg";
+
+    // add class to the created div element
+    recentmoveImgSubCon.classList = "recentMovesLoseImg";
+
+    // add recent moves sub container to the recent moves container
+    recentMovesImgContainer.insertAdjacentElement(
+      "afterbegin",
+      recentmoveImgSubCon
+    );
+
+    // add img src to recent moves images
+    recemtmoveImgPlayer.src = "images/Paper-Player.svg";
+    recemtmoveImgVersus.src = "images/versusimg.svg";
+    recemtmoveImgBot.src = "images/Scissor-Bot.svg";
+
+    // add class to recent moves images
+    recemtmoveImgPlayer.classList = "recentImgs";
+    recemtmoveImgVersus.classList = "recentImgs";
+    recemtmoveImgBot.classList = "recentImgs";
+
+    // add contents to recent moves sub container
+    recentmoveImgSubCon.insertAdjacentElement(
+      "afterbegin",
+      recemtmoveImgPlayer
+    );
+    recentmoveImgSubCon.insertAdjacentElement("beforeend", recemtmoveImgVersus);
+    recentmoveImgSubCon.insertAdjacentElement("beforeend", recemtmoveImgBot);
   }
 }
+
 function scissorMoveFn() {
   // create div element to be added to recent moves image container
   let recentmoveImgSubCon = document.createElement("div");
@@ -442,154 +425,145 @@ function scissorMoveFn() {
 
   switch (botMove[Math.floor(Math.random() * 3)]) {
     case "rock":
+      removeMoveBtnEventListener();
+      addAnim();
       // add score to bot
       botScore += 1;
-
-      playerPickedMoveImg.src = "images/Scissor-Player.svg";
-      botPickedMoveImg.src = "images/Rock-Bot.svg";
-
-      // add class to the created div element
-      recentmoveImgSubCon.classList = "recentMovesLoseImg";
-
-      // add recent moves sub container to the recent moves container
-      recentMovesImgContainer.insertAdjacentElement(
-        "afterbegin",
-        recentmoveImgSubCon
-      );
-
-      // add img src to recent moves images
-      recemtmoveImgPlayer.src = "images/Scissor-Player.svg";
-      recemtmoveImgVersus.src = "images/versusimg.svg";
-      recemtmoveImgBot.src = "images/Rock-Bot.svg";
-
-      // add class to recent moves images
-      recemtmoveImgPlayer.classList = "recentImgs";
-      recemtmoveImgVersus.classList = "recentImgs";
-      recemtmoveImgBot.classList = "recentImgs";
-
-      // add contents to recent moves sub container
-      recentmoveImgSubCon.insertAdjacentElement(
-        "afterbegin",
-        recemtmoveImgPlayer
-      );
-      recentmoveImgSubCon.insertAdjacentElement(
-        "beforeend",
-        recemtmoveImgVersus
-      );
-      recentmoveImgSubCon.insertAdjacentElement("beforeend", recemtmoveImgBot);
+      setTimeout(scissorRock, 3000);
+      // setTimeout(showPopupMsg, 4000);
+      // setTimeout(hidePopupMsg, 6000);
+      setTimeout(removeAnim, 3000);
+      setTimeout(updateScoreDisplay, 3000);
+      if (playerScore < 5 && botScore < 5) {
+        setTimeout(addMoveBtnEventListener, 3000);
+      }
       break;
     case "paper":
+      removeMoveBtnEventListener();
+      addAnim();
       // add score to player
       playerScore += 1;
-
-      playerPickedMoveImg.src = "images/Scissor-Player.svg";
-      botPickedMoveImg.src = "images/Paper-Bot.svg";
-
-      // add class to the created div element
-      recentmoveImgSubCon.classList = "recentMovesWinImg";
-
-      // add recent moves sub container to the recent moves container
-      recentMovesImgContainer.insertAdjacentElement(
-        "afterbegin",
-        recentmoveImgSubCon
-      );
-
-      // add img src to recent moves images
-      recemtmoveImgPlayer.src = "images/Scissor-Player.svg";
-      recemtmoveImgVersus.src = "images/versusimg.svg";
-      recemtmoveImgBot.src = "images/Paper-Bot.svg";
-
-      // add class to recent moves images
-      recemtmoveImgPlayer.classList = "recentImgs";
-      recemtmoveImgVersus.classList = "recentImgs";
-      recemtmoveImgBot.classList = "recentImgs";
-
-      // add contents to recent moves sub container
-      recentmoveImgSubCon.insertAdjacentElement(
-        "afterbegin",
-        recemtmoveImgPlayer
-      );
-      recentmoveImgSubCon.insertAdjacentElement(
-        "beforeend",
-        recemtmoveImgVersus
-      );
-      recentmoveImgSubCon.insertAdjacentElement("beforeend", recemtmoveImgBot);
+      setTimeout(scissorPaper, 3000);
+      // setTimeout(showPopupMsg, 4000);
+      // setTimeout(hidePopupMsg, 6000);
+      setTimeout(removeAnim, 3000);
+      setTimeout(updateScoreDisplay, 3000);
+      if (playerScore < 5 && botScore < 5) {
+        setTimeout(addMoveBtnEventListener, 3000);
+      }
       break;
     case "scissor":
-      playerPickedMoveImg.src = "images/Scissor-Player.svg";
-      botPickedMoveImg.src = "images/Scissor-Bot.svg";
-
-      // add class to the created div element
-      recentmoveImgSubCon.classList = "recentMovesDrawImg";
-
-      // add recent moves sub container to the recent moves container
-      recentMovesImgContainer.insertAdjacentElement(
-        "afterbegin",
-        recentmoveImgSubCon
-      );
-
-      // add img src to recent moves images
-      recemtmoveImgPlayer.src = "images/Scissor-Player.svg";
-      recemtmoveImgVersus.src = "images/versusimg.svg";
-      recemtmoveImgBot.src = "images/Scissor-Bot.svg";
-
-      // add class to recent moves images
-      recemtmoveImgPlayer.classList = "recentImgs";
-      recemtmoveImgVersus.classList = "recentImgs";
-      recemtmoveImgBot.classList = "recentImgs";
-
-      // add contents to recent moves sub container
-      recentmoveImgSubCon.insertAdjacentElement(
-        "afterbegin",
-        recemtmoveImgPlayer
-      );
-      recentmoveImgSubCon.insertAdjacentElement(
-        "beforeend",
-        recemtmoveImgVersus
-      );
-      recentmoveImgSubCon.insertAdjacentElement("beforeend", recemtmoveImgBot);
+      removeMoveBtnEventListener();
+      addAnim();
+      setTimeout(scissorScissor, 3000);
+      // setTimeout(showPopupMsg, 4000);
+      // setTimeout(hidePopupMsg, 6000);
+      setTimeout(removeAnim, 3000);
+      setTimeout(updateScoreDisplay, 3000);
+      if (playerScore < 5 && botScore < 5) {
+        setTimeout(addMoveBtnEventListener, 3000);
+      }
       break;
     default:
   }
 
-  if (playerScore == 1) {
-    playerScoreDisplay.children[0].classList = "fa-solid fa-star";
-  } else if (playerScore == 2) {
-    playerScoreDisplay.children[1].classList = "fa-solid fa-star";
-  } else if (playerScore == 3) {
-    playerScoreDisplay.children[2].classList = "fa-solid fa-star";
-  } else if (playerScore == 4) {
-    playerScoreDisplay.children[3].classList = "fa-solid fa-star";
-  } else if (playerScore == 5) {
-    playerScoreDisplay.children[4].classList = "fa-solid fa-star";
+  function scissorRock() {
+    // change picked move image
+    playerPickedMoveImg.src = "images/Scissor-Player.svg";
+    botPickedMoveImg.src = "images/Rock-Bot.svg";
 
-    // remove event listener of move buttons
-    rockMoveBtn.removeEventListener("click", rockMoveFn);
-    paperMoveBtn.removeEventListener("click", paperMoveFn);
-    scissorMoveBtn.removeEventListener("click", scissorMoveFn);
+    // add class to the created div element
+    recentmoveImgSubCon.classList = "recentMovesLoseImg";
 
-    // show message for winning
-    alert(winMessage[Math.round(Math.random() * 4)]);
+    // add recent moves sub container to the recent moves container
+    recentMovesImgContainer.insertAdjacentElement(
+      "afterbegin",
+      recentmoveImgSubCon
+    );
+
+    // add img src to recent moves images
+    recemtmoveImgPlayer.src = "images/Scissor-Player.svg";
+    recemtmoveImgVersus.src = "images/versusimg.svg";
+    recemtmoveImgBot.src = "images/Rock-Bot.svg";
+
+    // add class to recent moves images
+    recemtmoveImgPlayer.classList = "recentImgs";
+    recemtmoveImgVersus.classList = "recentImgs";
+    recemtmoveImgBot.classList = "recentImgs";
+
+    // add contents to recent moves sub container
+    recentmoveImgSubCon.insertAdjacentElement(
+      "afterbegin",
+      recemtmoveImgPlayer
+    );
+    recentmoveImgSubCon.insertAdjacentElement("beforeend", recemtmoveImgVersus);
+    recentmoveImgSubCon.insertAdjacentElement("beforeend", recemtmoveImgBot);
   }
 
-  if (botScore == 1) {
-    botScoreDisplay.children[0].classList = "fa-solid fa-star";
-  } else if (botScore == 2) {
-    botScoreDisplay.children[1].classList = "fa-solid fa-star";
-  } else if (botScore == 3) {
-    botScoreDisplay.children[2].classList = "fa-solid fa-star";
-  } else if (botScore == 4) {
-    botScoreDisplay.children[3].classList = "fa-solid fa-star";
-  } else if (botScore == 5) {
-    botScoreDisplay.children[4].classList = "fa-solid fa-star";
+  function scissorPaper() {
+    // change picked move image
+    playerPickedMoveImg.src = "images/Scissor-Player.svg";
+    botPickedMoveImg.src = "images/Paper-Bot.svg";
 
-    // remove event listener of move buttons
-    rockMoveBtn.removeEventListener("click", rockMoveFn);
-    paperMoveBtn.removeEventListener("click", paperMoveFn);
-    scissorMoveBtn.removeEventListener("click", scissorMoveFn);
+    // add class to the created div element
+    recentmoveImgSubCon.classList = "recentMovesWinImg";
 
-    // show message for losing
-    alert(loseMessage[Math.round(Math.random() * 4)]);
+    // add recent moves sub container to the recent moves container
+    recentMovesImgContainer.insertAdjacentElement(
+      "afterbegin",
+      recentmoveImgSubCon
+    );
+
+    // add img src to recent moves images
+    recemtmoveImgPlayer.src = "images/Scissor-Player.svg";
+    recemtmoveImgVersus.src = "images/versusimg.svg";
+    recemtmoveImgBot.src = "images/Paper-Bot.svg";
+
+    // add class to recent moves images
+    recemtmoveImgPlayer.classList = "recentImgs";
+    recemtmoveImgVersus.classList = "recentImgs";
+    recemtmoveImgBot.classList = "recentImgs";
+
+    // add contents to recent moves sub container
+    recentmoveImgSubCon.insertAdjacentElement(
+      "afterbegin",
+      recemtmoveImgPlayer
+    );
+    recentmoveImgSubCon.insertAdjacentElement("beforeend", recemtmoveImgVersus);
+    recentmoveImgSubCon.insertAdjacentElement("beforeend", recemtmoveImgBot);
+  }
+
+  function scissorScissor() {
+    // change picked move image
+    playerPickedMoveImg.src = "images/Scissor-Player.svg";
+    botPickedMoveImg.src = "images/Scissor-Bot.svg";
+
+    // add class to the created div element
+    recentmoveImgSubCon.classList = "recentMovesDrawImg";
+
+    // add recent moves sub container to the recent moves container
+    recentMovesImgContainer.insertAdjacentElement(
+      "afterbegin",
+      recentmoveImgSubCon
+    );
+
+    // add img src to recent moves images
+    recemtmoveImgPlayer.src = "images/Scissor-Player.svg";
+    recemtmoveImgVersus.src = "images/versusimg.svg";
+    recemtmoveImgBot.src = "images/Scissor-Bot.svg";
+
+    // add class to recent moves images
+    recemtmoveImgPlayer.classList = "recentImgs";
+    recemtmoveImgVersus.classList = "recentImgs";
+    recemtmoveImgBot.classList = "recentImgs";
+
+    // add contents to recent moves sub container
+    recentmoveImgSubCon.insertAdjacentElement(
+      "afterbegin",
+      recemtmoveImgPlayer
+    );
+    recentmoveImgSubCon.insertAdjacentElement("beforeend", recemtmoveImgVersus);
+    recentmoveImgSubCon.insertAdjacentElement("beforeend", recemtmoveImgBot);
   }
 }
 
@@ -602,5 +576,104 @@ function exitGame() {
     window.close();
   } else {
     alert("Good! Beat that bot!");
+  }
+}
+
+function showPopupMsg() {
+  // show popup message
+  popupMsgContainer.style.display = "flex";
+  popupMsgContainer.classList.add("animate__tada");
+  rockMoveBtn.removeEventListener("click", rockMoveFn);
+  paperMoveBtn.removeEventListener("click", paperMoveFn);
+  scissorMoveBtn.removeEventListener("click", scissorMoveFn);
+
+  let popupMsgContent = document.createElement("div");
+  popupMsgContent.classList = "popupMessageContent";
+
+  let popupMessageContentH1 = document.createElement("h1");
+  let popupMessageContentP = document.createElement("p");
+
+  if (playerScore == 5) {
+    popupMessageContentH1.textContent = "Player 1 Won!";
+    popupMessageContentP.textContent =
+      winMessage[Math.floor(Math.random() * 4)];
+    popupMsgContainer.insertAdjacentElement("afterbegin", popupMsgContent);
+    popupMsgContent.insertAdjacentElement("afterbegin", popupMessageContentH1);
+    popupMsgContent.insertAdjacentElement("beforeend", popupMessageContentP);
+  } else if (botScore == 5) {
+    popupMessageContentH1.textContent = "Bot Won!";
+    popupMessageContentP.textContent =
+      loseMessage[Math.floor(Math.random() * 4)];
+    popupMsgContainer.insertAdjacentElement("afterbegin", popupMsgContent);
+    popupMsgContent.insertAdjacentElement("afterbegin", popupMessageContentH1);
+    popupMsgContent.insertAdjacentElement("beforeend", popupMessageContentP);
+  }
+}
+
+function hidePopupMsg() {
+  // hide popup message
+  popupMsgContainer.style.display = "none";
+  popupMsgContainer.classList.add("animate__tada");
+  rockMoveBtn.addEventListener("click", rockMoveFn);
+  paperMoveBtn.addEventListener("click", paperMoveFn);
+  scissorMoveBtn.addEventListener("click", scissorMoveFn);
+}
+
+function addAnim() {
+  // change picked move image
+  playerPickedMoveImg.src = "images/Rock-Player.svg";
+  botPickedMoveImg.src = "images/Rock-Bot.svg";
+
+  playerPickedMoveImg.classList.add("animate__swing");
+  botPickedMoveImg.classList.add("animate__swing");
+}
+
+function removeAnim() {
+  playerPickedMoveImg.classList.remove("animate__swing");
+  botPickedMoveImg.classList.remove("animate__swing");
+}
+
+function addMoveBtnEventListener() {
+  // remove event listener of move buttons
+  rockMoveBtn.addEventListener("click", rockMoveFn);
+  paperMoveBtn.addEventListener("click", paperMoveFn);
+  scissorMoveBtn.addEventListener("click", scissorMoveFn);
+}
+
+function removeMoveBtnEventListener() {
+  // remove event listener of move buttons
+  rockMoveBtn.removeEventListener("click", rockMoveFn);
+  paperMoveBtn.removeEventListener("click", paperMoveFn);
+  scissorMoveBtn.removeEventListener("click", scissorMoveFn);
+}
+
+function updateScoreDisplay() {
+  // fill the star dipending on the scores
+  if (playerScore == 1) {
+    playerScoreDisplay.children[0].classList = "fa-solid fa-star";
+  } else if (playerScore == 2) {
+    playerScoreDisplay.children[1].classList = "fa-solid fa-star";
+  } else if (playerScore == 3) {
+    playerScoreDisplay.children[2].classList = "fa-solid fa-star";
+  } else if (playerScore == 4) {
+    playerScoreDisplay.children[3].classList = "fa-solid fa-star";
+  } else if (playerScore == 5) {
+    playerScoreDisplay.children[4].classList = "fa-solid fa-star";
+    removeMoveBtnEventListener();
+    showPopupMsg();
+  }
+
+  if (botScore == 1) {
+    botScoreDisplay.children[0].classList = "fa-solid fa-star";
+  } else if (botScore == 2) {
+    botScoreDisplay.children[1].classList = "fa-solid fa-star";
+  } else if (botScore == 3) {
+    botScoreDisplay.children[2].classList = "fa-solid fa-star";
+  } else if (botScore == 4) {
+    botScoreDisplay.children[3].classList = "fa-solid fa-star";
+  } else if (botScore == 5) {
+    botScoreDisplay.children[4].classList = "fa-solid fa-star";
+    removeMoveBtnEventListener();
+    showPopupMsg();
   }
 }

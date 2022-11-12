@@ -9,6 +9,10 @@
       src="https://kit.fontawesome.com/b6f073fba6.js"
       crossorigin="anonymous"
     ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
     <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
@@ -35,7 +39,7 @@
           <img
             src="images/Rock-Player.svg"
             alt=""
-            class="pickedMoveImg"
+            class="pickedMoveImg animate__animated"
             id="playerPickedMoveImg"
           />
         </div>
@@ -88,7 +92,7 @@
           <img
             src="images/Rock-Bot.svg"
             alt=""
-            class="pickedMoveImg"
+            class="pickedMoveImg animate__animated"
             id="botPickedMoveImg"
           />
         </div>
@@ -104,7 +108,7 @@
                 <i class="fa-regular fa-star"></i>
               </div>
             </div>
-            <div class="moveContainer">
+            <div class="moveContainer disabled">
               <img src="images/Rock-Bot.svg" alt="" class="moveBtn" />
               <img src="images/Paper-Bot.svg" alt="" class="moveBtn" />
               <img src="images/Scissor-Bot.svg" alt="" class="moveBtn" />
@@ -112,6 +116,11 @@
           </div>
         </div>
       </div>
+      <div
+        id="popupMessage"
+        style="display: none"
+        class="animate__animated"
+      ></div>
     </div>
     <script src="js/script.js"></script>
   </body>

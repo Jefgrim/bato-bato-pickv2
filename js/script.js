@@ -128,6 +128,9 @@ function rockMoveFn() {
       recentmoveImgSubCon.insertAdjacentElement("beforeend", recemtmoveImgBot);
       break;
     case "paper":
+      // add score to bot
+      botScore += 1;
+
       playerPickedMoveImg.src = "images/Rock-Player.svg";
       botPickedMoveImg.src = "images/Paper-Bot.svg";
 
@@ -162,6 +165,9 @@ function rockMoveFn() {
       recentmoveImgSubCon.insertAdjacentElement("beforeend", recemtmoveImgBot);
       break;
     case "scissor":
+      // add score to player
+      playerScore += 1;
+
       playerPickedMoveImg.src = "images/Rock-Player.svg";
       botPickedMoveImg.src = "images/Scissor-Bot.svg";
 
@@ -196,6 +202,30 @@ function rockMoveFn() {
       recentmoveImgSubCon.insertAdjacentElement("beforeend", recemtmoveImgBot);
       break;
     default:
+  }
+
+  if (playerScore == 1) {
+    playerScoreDisplay.children[0].classList = "fa-solid fa-star";
+  } else if (playerScore == 2) {
+    playerScoreDisplay.children[1].classList = "fa-solid fa-star";
+  } else if (playerScore == 3) {
+    playerScoreDisplay.children[2].classList = "fa-solid fa-star";
+  } else if (playerScore == 4) {
+    playerScoreDisplay.children[3].classList = "fa-solid fa-star";
+  } else if (playerScore == 5) {
+    playerScoreDisplay.children[4].classList = "fa-solid fa-star";
+  }
+
+  if (botScore == 1) {
+    botScoreDisplay.children[0].classList = "fa-solid fa-star";
+  } else if (botScore == 2) {
+    botScoreDisplay.children[1].classList = "fa-solid fa-star";
+  } else if (botScore == 3) {
+    botScoreDisplay.children[2].classList = "fa-solid fa-star";
+  } else if (botScore == 4) {
+    botScoreDisplay.children[3].classList = "fa-solid fa-star";
+  } else if (botScore == 5) {
+    botScoreDisplay.children[4].classList = "fa-solid fa-star";
   }
 }
 function paperMoveFn() {
@@ -209,6 +239,9 @@ function paperMoveFn() {
 
   switch (botMove[Math.floor(Math.random() * 3)]) {
     case "rock":
+      // add score to player
+      playerScore += 1;
+
       playerPickedMoveImg.src = "images/Paper-Player.svg";
       botPickedMoveImg.src = "images/Rock-Bot.svg";
 
@@ -277,6 +310,9 @@ function paperMoveFn() {
       recentmoveImgSubCon.insertAdjacentElement("beforeend", recemtmoveImgBot);
       break;
     case "scissor":
+      // add score to bot
+      botScore += 1;
+
       playerPickedMoveImg.src = "images/Paper-Player.svg";
       botPickedMoveImg.src = "images/Scissor-Bot.svg";
 
@@ -312,6 +348,30 @@ function paperMoveFn() {
       break;
     default:
   }
+
+  if (playerScore == 1) {
+    playerScoreDisplay.children[0].classList = "fa-solid fa-star";
+  } else if (playerScore == 2) {
+    playerScoreDisplay.children[1].classList = "fa-solid fa-star";
+  } else if (playerScore == 3) {
+    playerScoreDisplay.children[2].classList = "fa-solid fa-star";
+  } else if (playerScore == 4) {
+    playerScoreDisplay.children[3].classList = "fa-solid fa-star";
+  } else if (playerScore == 5) {
+    playerScoreDisplay.children[4].classList = "fa-solid fa-star";
+  }
+
+  if (botScore == 1) {
+    botScoreDisplay.children[0].classList = "fa-solid fa-star";
+  } else if (botScore == 2) {
+    botScoreDisplay.children[1].classList = "fa-solid fa-star";
+  } else if (botScore == 3) {
+    botScoreDisplay.children[2].classList = "fa-solid fa-star";
+  } else if (botScore == 4) {
+    botScoreDisplay.children[3].classList = "fa-solid fa-star";
+  } else if (botScore == 5) {
+    botScoreDisplay.children[4].classList = "fa-solid fa-star";
+  }
 }
 function scissorMoveFn() {
   // create div element to be added to recent moves image container
@@ -324,6 +384,9 @@ function scissorMoveFn() {
 
   switch (botMove[Math.floor(Math.random() * 3)]) {
     case "rock":
+      // add score to bot
+      botScore += 1;
+
       playerPickedMoveImg.src = "images/Scissor-Player.svg";
       botPickedMoveImg.src = "images/Rock-Bot.svg";
 
@@ -358,6 +421,9 @@ function scissorMoveFn() {
       recentmoveImgSubCon.insertAdjacentElement("beforeend", recemtmoveImgBot);
       break;
     case "paper":
+      // add score to player
+      playerScore += 1;
+
       playerPickedMoveImg.src = "images/Scissor-Player.svg";
       botPickedMoveImg.src = "images/Paper-Bot.svg";
 
@@ -426,5 +492,29 @@ function scissorMoveFn() {
       recentmoveImgSubCon.insertAdjacentElement("beforeend", recemtmoveImgBot);
       break;
     default:
+  }
+
+  if (playerScore == 1) {
+    playerScoreDisplay.children[0].classList = "fa-solid fa-star";
+  } else if (playerScore == 2) {
+    playerScoreDisplay.children[1].classList = "fa-solid fa-star";
+  } else if (playerScore == 3) {
+    playerScoreDisplay.children[2].classList = "fa-solid fa-star";
+  } else if (playerScore == 4) {
+    playerScoreDisplay.children[3].classList = "fa-solid fa-star";
+  } else if (playerScore == 5) {
+    playerScoreDisplay.children[4].classList = "fa-solid fa-star";
+  }
+
+  if (botScore == 1) {
+    botScoreDisplay.children[0].classList = "fa-solid fa-star";
+  } else if (botScore == 2) {
+    botScoreDisplay.children[1].classList = "fa-solid fa-star";
+  } else if (botScore == 3) {
+    botScoreDisplay.children[2].classList = "fa-solid fa-star";
+  } else if (botScore == 4) {
+    botScoreDisplay.children[3].classList = "fa-solid fa-star";
+  } else if (botScore == 5) {
+    botScoreDisplay.children[4].classList = "fa-solid fa-star";
   }
 }

@@ -7,7 +7,7 @@ let smallScreenPrompt = document.querySelector("#smallScreenPrompt");
 let smallScreenPromptTxt = document.querySelector("#smallScreenPromptTxt");
 
 // if screen is width is less than 768px do this
-if (window.innerWidth < 768) {
+if (window.innerWidth < 630) {
   fullScreenBtn.addEventListener("click", fullscreen);
 } else {
   mainContainer.style.display = "block";
@@ -18,7 +18,7 @@ if (window.innerWidth < 768) {
 window.addEventListener("resize", reportWindowWidth);
 
 function reportWindowWidth() {
-  if (window.innerWidth < 768) {
+  if (window.innerWidth < 630) {
     fullScreenBtn.addEventListener("click", fullscreen);
     mainContainer.style.display = "none";
     smallScreenPrompt.style.display = "flex";
@@ -33,7 +33,7 @@ function reportWindowWidth() {
 function fullscreen() {
   mainContainer.requestFullscreen();
   screen.orientation.lock("landscape-primary");
-  if (window.innerWidth < 768) {
+  if (window.innerWidth < 630) {
     document.exitFullscreen();
     smallScreenPromptTxt.textContent =
       "Your Screen is too small for this game, Sorry.";

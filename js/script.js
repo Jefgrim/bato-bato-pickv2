@@ -13,6 +13,9 @@ let recentMovesImgContainer = document.querySelector(
   "#recentMovesImgContainer"
 );
 
+// get player move container
+let playerMoveContainer = document.querySelector(".playerMoveContainer");
+
 // get picked move image
 let playerPickedMoveImg = document.querySelector("#playerPickedMoveImg");
 let botPickedMoveImg = document.querySelector("#botPickedMoveImg");
@@ -113,6 +116,8 @@ function rockMoveFn() {
   let recemtmoveImgPlayer = document.createElement("img");
   let recemtmoveImgVersus = document.createElement("img");
   let recemtmoveImgBot = document.createElement("img");
+
+  playerMoveContainer.classList.add("disabled");
 
   switch (botMove[Math.floor(Math.random() * 3)]) {
     case "rock":
@@ -258,6 +263,8 @@ function paperMoveFn() {
   let recemtmoveImgPlayer = document.createElement("img");
   let recemtmoveImgVersus = document.createElement("img");
   let recemtmoveImgBot = document.createElement("img");
+
+  playerMoveContainer.classList.add("disabled");
 
   switch (botMove[Math.floor(Math.random() * 3)]) {
     case "rock":
@@ -405,6 +412,8 @@ function scissorMoveFn() {
   let recemtmoveImgPlayer = document.createElement("img");
   let recemtmoveImgVersus = document.createElement("img");
   let recemtmoveImgBot = document.createElement("img");
+
+  playerMoveContainer.classList.add("disabled");
 
   switch (botMove[Math.floor(Math.random() * 3)]) {
     case "rock":
@@ -689,6 +698,7 @@ function addMoveBtnEventListener() {
   rockMoveBtn.addEventListener("click", rockMoveFn);
   paperMoveBtn.addEventListener("click", paperMoveFn);
   scissorMoveBtn.addEventListener("click", scissorMoveFn);
+  playerMoveContainer.classList.remove("disabled");
 }
 
 function removeMoveBtnEventListener() {

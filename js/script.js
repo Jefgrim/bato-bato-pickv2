@@ -2,7 +2,6 @@
 let mainContainer = document.querySelector(".mainContainer");
 
 // get button elements
-let fullScreenBtn = document.querySelector("#fullScreenBtn");
 let exitBtn = document.querySelector(".exitBtn");
 let rockMoveBtn = document.querySelector("#rockMoveBtn");
 let paperMoveBtn = document.querySelector("#paperMoveBtn");
@@ -33,7 +32,7 @@ let popupMsgContainer = document.querySelector("#popupMessage");
 
 // if screen width is less than 768px do this
 if (window.innerWidth < 630) {
-  fullScreenBtn.addEventListener("click", fullscreen);
+  smallScreenPrompt.addEventListener("click", fullscreen);
 } else {
   mainContainer.style.display = "block";
   smallScreenPrompt.style.display = "none";

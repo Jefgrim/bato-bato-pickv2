@@ -2,10 +2,8 @@
 let mainContainer = document.querySelector(".mainContainer");
 
 // get button elements
-let restartBtn = document.querySelector(".restartBtn");
 let fullScreenBtn = document.querySelector("#fullScreenBtn");
 let exitBtn = document.querySelector(".exitBtn");
-let quitBtn = document.querySelector("#quitBtn");
 let rockMoveBtn = document.querySelector("#rockMoveBtn");
 let paperMoveBtn = document.querySelector("#paperMoveBtn");
 let scissorMoveBtn = document.querySelector("#scissorMoveBtn");
@@ -98,11 +96,8 @@ let loseMessage = [
   "Better luck next time, if luck will ever be with you tho",
 ];
 
-// add event listener to restart button
-restartBtn.addEventListener("click", refreshPage);
-
 // add event listener to exit button
-exitBtn.addEventListener("click", exitGame);
+exitBtn.addEventListener("click", exitGamePopupMsg);
 
 // add event listener to the move buttons
 rockMoveBtn.addEventListener("click", rockMoveFn);
@@ -567,16 +562,49 @@ function scissorMoveFn() {
   }
 }
 
+// functions that will be called
+
 function refreshPage() {
   location.reload();
 }
 
+function exitGamePopupMsg() {
+  showPopupExitMsg();
+}
+
 function exitGame() {
-  if (confirm("Are you sure you want to quit the game?") == true) {
-    window.close();
-  } else {
-    alert("Good! Beat that bot!");
-  }
+  window.close();
+}
+
+function showPopupExitMsg() {
+  // show popup message
+  popupMsgContainer.style.display = "flex";
+  popupMsgContainer.classList.add("animate__tada");
+  rockMoveBtn.removeEventListener("click", rockMoveFn);
+  paperMoveBtn.removeEventListener("click", paperMoveFn);
+  scissorMoveBtn.removeEventListener("click", scissorMoveFn);
+
+  let popupMsgContent = document.createElement("div");
+  popupMsgContent.classList = "popupMessageContent";
+
+  let popupMessageContentH1 = document.createElement("h1");
+  let popupMessageContentP = document.createElement("p");
+  let popupMessageContentBtnY = document.createElement("button");
+  let popupMessageContentBtnN = document.createElement("button");
+
+  popupMessageContentH1.textContent = "Exit Game";
+  popupMessageContentP.textContent = "Are you sure?";
+  popupMessageContentBtnY.textContent = "Yes";
+  popupMessageContentBtnN.textContent = "No";
+
+  popupMessageContentBtnY.addEventListener("click", exitGame);
+  popupMessageContentBtnN.addEventListener("click", hidePopupMsg);
+
+  popupMsgContainer.insertAdjacentElement("afterbegin", popupMsgContent);
+  popupMsgContent.insertAdjacentElement("afterbegin", popupMessageContentH1);
+  popupMsgContent.insertAdjacentElement("beforeend", popupMessageContentP);
+  popupMsgContent.insertAdjacentElement("beforeend", popupMessageContentBtnY);
+  popupMsgContent.insertAdjacentElement("beforeend", popupMessageContentBtnN);
 }
 
 function showPopupMsg() {
@@ -613,10 +641,14 @@ function showPopupMsg() {
 function hidePopupMsg() {
   // hide popup message
   popupMsgContainer.style.display = "none";
-  popupMsgContainer.classList.add("animate__tada");
+  popupMsgContainer.classList.remove("animate__tada");
   rockMoveBtn.addEventListener("click", rockMoveFn);
   paperMoveBtn.addEventListener("click", paperMoveFn);
   scissorMoveBtn.addEventListener("click", scissorMoveFn);
+
+  while (popupMsgContainer.hasChildNodes()) {
+    popupMsgContainer.removeChild(popupMsgContainer.firstChild);
+  }
 }
 
 function addAnim() {
@@ -650,29 +682,39 @@ function removeMoveBtnEventListener() {
 function updateScoreDisplay() {
   // fill the star dipending on the scores
   if (playerScore == 1) {
-    playerScoreDisplay.children[0].classList = "fa-solid fa-star";
+    playerScoreDisplay.children[0].classList =
+      "fa-solid fa-star  animate__animated animate__tada";
   } else if (playerScore == 2) {
-    playerScoreDisplay.children[1].classList = "fa-solid fa-star";
+    playerScoreDisplay.children[1].classList =
+      "fa-solid fa-star  animate__animated animate__tada";
   } else if (playerScore == 3) {
-    playerScoreDisplay.children[2].classList = "fa-solid fa-star";
+    playerScoreDisplay.children[2].classList =
+      "fa-solid fa-star  animate__animated animate__tada";
   } else if (playerScore == 4) {
-    playerScoreDisplay.children[3].classList = "fa-solid fa-star";
+    playerScoreDisplay.children[3].classList =
+      "fa-solid fa-star  animate__animated animate__tada";
   } else if (playerScore == 5) {
-    playerScoreDisplay.children[4].classList = "fa-solid fa-star";
+    playerScoreDisplay.children[4].classList =
+      "fa-solid fa-star  animate__animated animate__tada";
     removeMoveBtnEventListener();
     showPopupMsg();
   }
 
   if (botScore == 1) {
-    botScoreDisplay.children[0].classList = "fa-solid fa-star";
+    botScoreDisplay.children[0].classList =
+      "fa-solid fa-star  animate__animated animate__tada";
   } else if (botScore == 2) {
-    botScoreDisplay.children[1].classList = "fa-solid fa-star";
+    botScoreDisplay.children[1].classList =
+      "fa-solid fa-star  animate__animated animate__tada";
   } else if (botScore == 3) {
-    botScoreDisplay.children[2].classList = "fa-solid fa-star";
+    botScoreDisplay.children[2].classList =
+      "fa-solid fa-star  animate__animated animate__tada";
   } else if (botScore == 4) {
-    botScoreDisplay.children[3].classList = "fa-solid fa-star";
+    botScoreDisplay.children[3].classList =
+      "fa-solid fa-star  animate__animated animate__tada";
   } else if (botScore == 5) {
-    botScoreDisplay.children[4].classList = "fa-solid fa-star";
+    botScoreDisplay.children[4].classList =
+      "fa-solid fa-star  animate__animated animate__tada";
     removeMoveBtnEventListener();
     showPopupMsg();
   }

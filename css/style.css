@@ -20,22 +20,11 @@ body {
   flex-direction: column;
 }
 
-.restartBtnContainer {
+.exitBtnContainer {
   height: 33.3%;
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.restartBtn {
-  font-size: 30px;
-  color: rgb(255, 246, 203);
-  background-color: rgb(252, 20, 3);
-  border-radius: 80%;
-  padding: 2%;
-  position: absolute;
-  left: 5px;
-  top: 5px;
 }
 
 .exitBtn {
@@ -46,8 +35,19 @@ body {
   padding: 2%;
   position: absolute;
   left: 5px;
-  top: 70px;
+  top: 5px;
 }
+/* 
+.exitBtn {
+  font-size: 30px;
+  color: rgb(255, 246, 203);
+  background-color: rgb(252, 20, 3);
+  border-radius: 80%;
+  padding: 2%;
+  position: absolute;
+  left: 5px;
+  top: 70px;
+} */
 
 .pickedMoveContainer {
   margin-top: 30px;

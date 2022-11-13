@@ -572,6 +572,7 @@ function playAgain() {
 
   updateScoreDisplay();
   hidePopupMsg();
+  playerMoveContainer.classList.remove("disabled");
 }
 
 function showPopupExitMsg() {

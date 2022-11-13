@@ -119,8 +119,6 @@ function rockMoveFn() {
       removeMoveBtnEventListener();
       addAnim();
       setTimeout(rockRock, 3000);
-      // setTimeout(showPopupMsg, 4000);
-      // setTimeout(hidePopupMsg, 6000);
       setTimeout(removeAnim, 3000);
       setTimeout(updateScoreDisplay, 3000);
       if (playerScore < 5 && botScore < 5) {
@@ -133,8 +131,6 @@ function rockMoveFn() {
       // add score to bot
       botScore += 1;
       setTimeout(rockPaper, 3000);
-      // setTimeout(showPopupMsg, 4000);
-      // setTimeout(hidePopupMsg, 6000);
       setTimeout(removeAnim, 3000);
       setTimeout(updateScoreDisplay, 3000);
       if (playerScore < 5 && botScore < 5) {
@@ -147,8 +143,6 @@ function rockMoveFn() {
       // add score to player
       playerScore += 1;
       setTimeout(rockScissor, 3000);
-      // setTimeout(showPopupMsg, 4000);
-      // setTimeout(hidePopupMsg, 6000);
       setTimeout(removeAnim, 3000);
       setTimeout(updateScoreDisplay, 3000);
       if (playerScore < 5 && botScore < 5) {
@@ -272,8 +266,6 @@ function paperMoveFn() {
       // add score to player
       playerScore += 1;
       setTimeout(paperRock, 3000);
-      // setTimeout(showPopupMsg, 4000);
-      // setTimeout(hidePopupMsg, 6000);
       setTimeout(removeAnim, 3000);
       setTimeout(updateScoreDisplay, 3000);
       if (playerScore < 5 && botScore < 5) {
@@ -284,8 +276,6 @@ function paperMoveFn() {
       removeMoveBtnEventListener();
       addAnim();
       setTimeout(paperPaper, 3000);
-      // setTimeout(showPopupMsg, 4000);
-      // setTimeout(hidePopupMsg, 6000);
       setTimeout(removeAnim, 3000);
       setTimeout(updateScoreDisplay, 3000);
       if (playerScore < 5 && botScore < 5) {
@@ -298,8 +288,6 @@ function paperMoveFn() {
       // add score to bot
       botScore += 1;
       setTimeout(paperScissor, 3000);
-      // setTimeout(showPopupMsg, 4000);
-      // setTimeout(hidePopupMsg, 6000);
       setTimeout(removeAnim, 3000);
       setTimeout(updateScoreDisplay, 3000);
       if (playerScore < 5 && botScore < 5) {
@@ -425,8 +413,6 @@ function scissorMoveFn() {
       // add score to bot
       botScore += 1;
       setTimeout(scissorRock, 3000);
-      // setTimeout(showPopupMsg, 4000);
-      // setTimeout(hidePopupMsg, 6000);
       setTimeout(removeAnim, 3000);
       setTimeout(updateScoreDisplay, 3000);
       if (playerScore < 5 && botScore < 5) {
@@ -439,8 +425,6 @@ function scissorMoveFn() {
       // add score to player
       playerScore += 1;
       setTimeout(scissorPaper, 3000);
-      // setTimeout(showPopupMsg, 4000);
-      // setTimeout(hidePopupMsg, 6000);
       setTimeout(removeAnim, 3000);
       setTimeout(updateScoreDisplay, 3000);
       if (playerScore < 5 && botScore < 5) {
@@ -451,8 +435,6 @@ function scissorMoveFn() {
       removeMoveBtnEventListener();
       addAnim();
       setTimeout(scissorScissor, 3000);
-      // setTimeout(showPopupMsg, 4000);
-      // setTimeout(hidePopupMsg, 6000);
       setTimeout(removeAnim, 3000);
       setTimeout(updateScoreDisplay, 3000);
       if (playerScore < 5 && botScore < 5) {
@@ -563,17 +545,24 @@ function scissorMoveFn() {
 }
 
 // functions that will be called
-
-function refreshPage() {
-  location.reload();
-}
-
 function exitGamePopupMsg() {
   showPopupExitMsg();
 }
 
 function exitGame() {
   window.close();
+}
+
+function playAgain() {
+  playerScore = 0;
+  botScore = 0;
+
+  while (recentMovesImgContainer.hasChildNodes()) {
+    recentMovesImgContainer.removeChild(recentMovesImgContainer.firstChild);
+  }
+
+  updateScoreDisplay();
+  hidePopupMsg();
 }
 
 function showPopupExitMsg() {
@@ -621,20 +610,50 @@ function showPopupMsg() {
   let popupMessageContentH1 = document.createElement("h1");
   let popupMessageContentP = document.createElement("p");
 
+  let popupMessageContentBtnAgain = document.createElement("button");
+  let popupMessageContentBtnExit = document.createElement("button");
+
   if (playerScore == 5) {
     popupMessageContentH1.textContent = "Player 1 Won!";
     popupMessageContentP.textContent =
       winMessage[Math.floor(Math.random() * 4)];
+    popupMessageContentBtnAgain.textContent = "Play Again";
+    popupMessageContentBtnExit.textContent = "Exit Now";
+
+    popupMessageContentBtnAgain.addEventListener("click", playAgain);
+    popupMessageContentBtnExit.addEventListener("click", exitGame);
+
     popupMsgContainer.insertAdjacentElement("afterbegin", popupMsgContent);
     popupMsgContent.insertAdjacentElement("afterbegin", popupMessageContentH1);
     popupMsgContent.insertAdjacentElement("beforeend", popupMessageContentP);
+    popupMsgContent.insertAdjacentElement(
+      "beforeend",
+      popupMessageContentBtnAgain
+    );
+    popupMsgContent.insertAdjacentElement(
+      "beforeend",
+      popupMessageContentBtnExit
+    );
   } else if (botScore == 5) {
     popupMessageContentH1.textContent = "Bot Won!";
     popupMessageContentP.textContent =
       loseMessage[Math.floor(Math.random() * 4)];
+    popupMessageContentBtnAgain.textContent = "Play Again";
+    popupMessageContentBtnExit.textContent = "Exit Now";
+
+    popupMessageContentBtnAgain.addEventListener("click", playAgain);
+    popupMessageContentBtnExit.addEventListener("click", exitGame);
     popupMsgContainer.insertAdjacentElement("afterbegin", popupMsgContent);
     popupMsgContent.insertAdjacentElement("afterbegin", popupMessageContentH1);
     popupMsgContent.insertAdjacentElement("beforeend", popupMessageContentP);
+    popupMsgContent.insertAdjacentElement(
+      "beforeend",
+      popupMessageContentBtnAgain
+    );
+    popupMsgContent.insertAdjacentElement(
+      "beforeend",
+      popupMessageContentBtnExit
+    );
   }
 }
 
@@ -681,7 +700,13 @@ function removeMoveBtnEventListener() {
 
 function updateScoreDisplay() {
   // fill the star dipending on the scores
-  if (playerScore == 1) {
+  if (playerScore == 0) {
+    playerScoreDisplay.children[0].classList = "fa-regular fa-star";
+    playerScoreDisplay.children[1].classList = "fa-regular fa-star";
+    playerScoreDisplay.children[2].classList = "fa-regular fa-star";
+    playerScoreDisplay.children[3].classList = "fa-regular fa-star";
+    playerScoreDisplay.children[4].classList = "fa-regular fa-star";
+  } else if (playerScore == 1) {
     playerScoreDisplay.children[0].classList =
       "fa-solid fa-star  animate__animated animate__tada";
   } else if (playerScore == 2) {
@@ -700,7 +725,13 @@ function updateScoreDisplay() {
     showPopupMsg();
   }
 
-  if (botScore == 1) {
+  if (botScore == 0) {
+    botScoreDisplay.children[0].classList = "fa-regular fa-star";
+    botScoreDisplay.children[1].classList = "fa-regular fa-star";
+    botScoreDisplay.children[2].classList = "fa-regular fa-star";
+    botScoreDisplay.children[3].classList = "fa-regular fa-star";
+    botScoreDisplay.children[4].classList = "fa-regular fa-star";
+  } else if (botScore == 1) {
     botScoreDisplay.children[0].classList =
       "fa-solid fa-star  animate__animated animate__tada";
   } else if (botScore == 2) {

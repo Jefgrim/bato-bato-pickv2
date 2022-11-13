@@ -61,14 +61,8 @@ function fullscreen() {
   if (window.innerWidth < 630) {
     document.exitFullscreen();
     smallScreenPromptTxt.textContent =
-      "Your Screen is too small for this game, Sorry.";
+      "Your Screen is too small for this game, or the landscape mode did not work, you can try to set your phone to landscape mode. Sorry for the inconvenience.";
     fullScreenBtn.style.display = "none";
-    quitBtn.style.display = "block";
-    quitBtn.addEventListener("click", quitGame);
-
-    function quitGame() {
-      window.close();
-    }
   }
 }
 
